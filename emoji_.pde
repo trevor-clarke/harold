@@ -18,47 +18,61 @@ void setup() {
   for(int x = 1; x< 11; x += 1){
    print(x); 
    print(" ");
-  };
+  }
 
 }
 
-void draw() {
-  
-  background(255, 192, 203);
 
+
+void drawHarold (int x, int y) {
   fill(255, 255, 0);
-  circle(emojiX, emojiY, emojiSize);
+  circle(x, y, emojiSize);
   
   fill(0, 0, 0);
   float offsetX = emojiSize/6.0;
   float offsetY = emojiSize/7.0;
-  circle(emojiX-offsetX, emojiY-offsetY, emojiSize/7.0);
-  circle(emojiX+offsetX, emojiY-offsetY, emojiSize/7.0);
+  circle(x-offsetX, y-offsetY, emojiSize/7.0);
+  circle(x+offsetX, y-offsetY, emojiSize/7.0);
   
   offsetY = emojiSize/5.0;
   float mouthWidth = emojiSize/2.0;
   float mouthHeight = emojiSize/3.0;
-  arc(emojiX, emojiY+offsetY, mouthWidth, mouthHeight, 0, PI);
+  arc(x, y+offsetY, mouthWidth, mouthHeight, 0, PI);
+  
+}
+
+
+
+
+void draw() {
+  
+  background(255, 192, 203);
+  
+  drawHarold(300, emojiY);
+  drawHarold(700, emojiY);
+
   
   textSize(80);
   textAlign(CENTER);
   text(emojiName, emojiX+300, 100);
   
-  emojiY += 10;
+  emojiY += 5;
   
 
-  for(int x = 0; x < 10; x += 1){
-    
-    circle(, height/2, 20);
-  };
+  for(int d = 0; d < 100; d += 1){
+    int calculatedX = d * 30 + 20/3;
+    if(calculatedX < width && (calculatedX < 200 || calculatedX > 800) || (calculatedX > 400 && calculatedX < 600)){
+      circle(calculatedX, height/2, 20);
+    }
+  }
   
-  circle(20, height/2, 20);
-  circle(50, height/2, 20);
-  circle(80, height/2, 20);
-  circle(110, height/2, 20);
-  circle(140, height/2, 20);
-  circle(170, height/2, 20);
-  circle(200, height/2, 20);
+  //circle(20, height/2, 20);
+  //circle(50, height/2, 20);
+  //circle(80, height/2, 20);
+  //circle(110, height/2, 20);
+  //circle(140, height/2, 20);
+  //circle(170, height/2, 20);
+  //circle(200, height/2, 20);
   
   
 
