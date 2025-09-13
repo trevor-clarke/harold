@@ -2,6 +2,18 @@
 final int EMOJI_SIZE = 200;
 final String EMOJI_NAME = "Harold";
 
+final float K = 0.5;
+final float M = 100;
+
+float _x = width/2;
+float _y = height/2;
+
+float v_x = 1;
+float v_y = 1;
+
+float a_x = 0;
+float a_y = 0.5;
+
 void setup() {
   size(1000, 800);
   noStroke();
@@ -10,11 +22,58 @@ void setup() {
 void draw() {
   background(255, 192, 203);
   drawHaroldName(100,50,25);
+  text("x: " + _x, 100, 100);
+  text("y: " + _y, 100, 120);
+  text("vx: " + v_x, 100, 140);
+  text("vy: " + v_y, 100, 160);
+  text("ax: " + a_x, 100, 180);
+  text("ay: " + a_y, 100, 200);
+  //friction
+  //a_x = -1*(K/M)*v_x;
+  //a_y = -1*(K/M)*v_y;
+  
+  // change in velocity
+  v_x = v_x + a_x;
+  v_y = v_y + a_y;
 
-  drawHarold(300, 500, EMOJI_SIZE);
+  // change in position
+  _x = _x + v_x;
+  _y = _y + v_y;
+  
+  //handle boundaries
+  
+  //floor
+  if(_y >= height - EMOJI_SIZE/2){
+      float overshootY = _y - (height- EMOJI_SIZE/2);
+      _y -= 2*overshootY;
+      v_y *= -1;
+  }
+  
+  //ceiling
+  if(_y <= 0 + EMOJI_SIZE/2){
+    float overshootY = _y - (0 + EMOJI_SIZE/2);
+    _y -= 2*overshootY;
+    v_y *= -1;
+  }
+  
+  //right side
+  if(_x >= width - EMOJI_SIZE/2){
+     float overshootX = _x - (width - EMOJI_SIZE/2);
+     _x -= 2* overshootX;
+     v_x *= -1;
+  }
+  
+  //left side
+  if(_x <= 0 + EMOJI_SIZE/2){
+    float overshootX = _x - (0 + EMOJI_SIZE/2);
+    _x -= 2* overshootX;
+    v_x *= -1;
+  }
+
+  drawHarold(_x, _y, EMOJI_SIZE);
 }
 
-void drawHarold (int x, int y, int size) {
+void drawHarold (float x, float y, int size) {
   fill(255, 255, 0);
   circle(x, y, size);
 
@@ -32,7 +91,7 @@ void drawHarold (int x, int y, int size) {
 
 void drawHaroldName(int x, int y, int s){
   textSize(s);
-  textAlign(CENTER);
+  textAlign(LEFT);
   text(EMOJI_NAME, x, y);
 }
 
