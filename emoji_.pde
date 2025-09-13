@@ -14,12 +14,18 @@ void setup() {
   // The setup() block runs once, right at the beginning.
   size(1000, 800); // Makes a canvas 600 pixels wide and 400 pixels tall.
   noStroke();
-  background(255, 192, 203);
+  
+  for(int x = 1; x< 11; x += 1){
+   print(x); 
+   print(" ");
+  };
 
 }
 
 void draw() {
   
+  background(255, 192, 203);
+
   fill(255, 255, 0);
   circle(emojiX, emojiY, emojiSize);
   
@@ -36,25 +42,33 @@ void draw() {
   
   textSize(80);
   textAlign(CENTER);
-  text(emojiName, emojiX+300, emojiY);
+  text(emojiName, emojiX+300, 100);
   
   emojiY += 10;
   
-  
-  
-  
-  
-  
-  
-  frameCounter += 1;
 
-  if(frameCounter < 15 || frameCounter > 20){
-    circle(dotX, height/2, 20);
+  for(int x = 0; x < 10; x += 1){
+    
+    circle(, height/2, 20);
   };
-  dotX += 30;
+  
+  circle(20, height/2, 20);
+  circle(50, height/2, 20);
+  circle(80, height/2, 20);
+  circle(110, height/2, 20);
+  circle(140, height/2, 20);
+  circle(170, height/2, 20);
+  circle(200, height/2, 20);
   
   
-  println("dotX: " + dotX + " frame: " + frameCounter); 
+
+
+  
+  
+ 
+  
+  
+  //println("dotX: " + dotX + " frame: " + frameCounter); 
   
   
   
