@@ -19,8 +19,8 @@ public class Emoji {
     this.size = size;
     this.name = name;
 
-    this.vx = random(-2, 2);
-    this.vy = random(-2, 2);
+    this.vx = random(-2, 3);
+    this.vy = random(-2, 3);
 
     this.ax = 0;
     this.ay = 0;

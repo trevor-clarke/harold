@@ -1,43 +1,66 @@
 
-Emoji harold;
-Emoji tim;
-Emoji phil;
-Emoji geronimo;
-Emoji bob;
-Emoji heather;
+Emoji[] emojis = new Emoji[150];
+
+String[] names = {
+  "Harold",
+  "Tim",
+  "Phil",
+  "Billy",
+  "Carl",
+  "Angela",
+  "Trevor",
+  "Mary",
+  "Paul",
+  "Greg",
+  "Gerald",
+  "Bob"
+};
+
+
+color randomColour(){
+  return color(random(255), random(255), random(255));
+}
 
 void setup() {
   size(1000, 800);
-  noStroke();
-  harold = new Emoji(color(255, 255, 0), 200, "Harold", 200, 100);
-  tim = new Emoji(color(255, 69, 0), 300, "Tim", 800, 700);
-  phil = new Emoji(color(170, 30, 1), 200, "Phil", 300, 200);
-  geronimo = new Emoji(color(10, 200, 80), 80, "Geronimo", 500, 400);
-  bob = new Emoji(color(0, 255, 30), 200, "Bob", 100, 600);
-  heather = new Emoji(color(200, 100, 255), 100, "Heather", 0, 300);
+  noStroke();  
   
+  for(int i =0; i < emojis.length; i++){
+    emojis[i] = new Emoji(
+      randomColour(), 
+      (int)random(10, 150), 
+      names[(int)random(names.length)], 
+      random(width), 
+      random(height)
+    );
+  }
 }
 
 void draw() {
   background(255, 192, 203);
   
-  harold.update();
-  harold.draw();
+  for(Emoji emoji : emojis){
+    emoji.update();
+    emoji.draw();
+  }
   
-  tim.update();
-  tim.draw();
+  //emojis[0].update();
+  //emojis[0].draw();
   
-  phil.update();
-  phil.draw();
+  //tim.update();
+  //tim.draw();
   
-  geronimo.update();
-  geronimo.draw();
+  //phil.update();
+  //phil.draw();
   
-  bob.update();
-  bob.draw();
+  //geronimo.update();
+  //geronimo.draw();
   
-  heather.update();
-  heather.draw();
+  //bob.update();
+  //bob.draw();
+  
+  //heather.update();
+  //heather.draw();
 
 }
 
