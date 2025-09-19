@@ -1,146 +1,44 @@
 
-final int EMOJI_SIZE = 200;
-final String EMOJI_NAME = "Harold";
-
-final float K = 0.5;
-final float M = 100;
-
-float _x = width/2;
-float _y = height/2;
-
-float v_x = 1;
-float v_y = 1;
-
-float a_x = 0;
-float a_y = 0.5;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public class Car {
-   int topSpeed;
-   String colour;
-   int currentSpeed;
-   
-   public Car(int topSpeed, String colour){
-     this.topSpeed = topSpeed;
-     this.colour = colour; 
-   }
-   
-   public void print_specs(){
-      println("Colour: " + this.colour);
-      println("Top speed: " + this.topSpeed);
-   }
-}
+Emoji harold;
+Emoji tim;
+Emoji phil;
+Emoji geronimo;
+Emoji bob;
+Emoji heather;
 
 void setup() {
   size(1000, 800);
   noStroke();
+  harold = new Emoji(color(255, 255, 0), 200, "Harold", 200, 100);
+  tim = new Emoji(color(255, 69, 0), 300, "Tim", 800, 700);
+  phil = new Emoji(color(170, 30, 1), 200, "Phil", 300, 200);
+  geronimo = new Emoji(color(10, 200, 80), 80, "Geronimo", 500, 400);
+  bob = new Emoji(color(0, 255, 30), 200, "Bob", 100, 600);
+  heather = new Emoji(color(200, 100, 255), 100, "Heather", 0, 300);
   
-  Car myCar = new Car(55, "black");
-  Car yourCar = new Car(80, "pink");
-
-  println("myCar");
-  myCar.print_specs();
-  println();
-  println("yourCar");
-  yourCar.print_specs();
-    
 }
-
-
-
-
-
-
-
 
 void draw() {
   background(255, 192, 203);
-  drawHaroldName(100,50,25);
-  text("x: " + _x, 100, 100);
-  text("y: " + _y, 100, 120);
-  text("vx: " + v_x, 100, 140);
-  text("vy: " + v_y, 100, 160);
-  text("ax: " + a_x, 100, 180);
-  text("ay: " + a_y, 100, 200);
-  //friction
-  //a_x = -1*(K/M)*v_x;
-  //a_y = -1*(K/M)*v_y;
   
-  // change in velocity
-  v_x = v_x + a_x;
-  v_y = v_y + a_y;
-
-  // change in position
-  _x = _x + v_x;
-  _y = _y + v_y;
+  harold.update();
+  harold.draw();
   
-  //handle boundaries
+  tim.update();
+  tim.draw();
   
-  //floor
-  if(_y >= height - EMOJI_SIZE/2){
-      float overshootY = _y - (height- EMOJI_SIZE/2);
-      _y -= 2*overshootY;
-      v_y *= -1;
-  }
+  phil.update();
+  phil.draw();
   
-  //ceiling
-  if(_y <= 0 + EMOJI_SIZE/2){
-    float overshootY = _y - (0 + EMOJI_SIZE/2);
-    _y -= 2*overshootY;
-    v_y *= -1;
-  }
+  geronimo.update();
+  geronimo.draw();
   
-  //right side
-  if(_x >= width - EMOJI_SIZE/2){
-     float overshootX = _x - (width - EMOJI_SIZE/2);
-     _x -= 2* overshootX;
-     v_x *= -1;
-  }
+  bob.update();
+  bob.draw();
   
-  //left side
-  if(_x <= 0 + EMOJI_SIZE/2){
-    float overshootX = _x - (0 + EMOJI_SIZE/2);
-    _x -= 2* overshootX;
-    v_x *= -1;
-  }
+  heather.update();
+  heather.draw();
 
-  drawHarold(_x, _y, EMOJI_SIZE);
-}
-
-void drawHarold (float x, float y, int size) {
-  fill(255, 255, 0);
-  circle(x, y, size);
-
-  fill(0, 0, 0);
-  float offsetX = size/6.0;
-  float offsetY = size/7.0;
-  circle(x-offsetX, y-offsetY, size/7.0);
-  circle(x+offsetX, y-offsetY, size/7.0);
-
-  offsetY = size/5.0;
-  float mouthWidth = size/2.0;
-  float mouthHeight = size/3.0;
-  arc(x, y+offsetY, mouthWidth, mouthHeight, 0, PI);
-}
-
-void drawHaroldName(int x, int y, int s){
-  textSize(s);
-  textAlign(LEFT);
-  text(EMOJI_NAME, x, y);
 }
 
 void drawDots () {
