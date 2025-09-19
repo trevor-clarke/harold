@@ -14,10 +14,58 @@ float v_y = 1;
 float a_x = 0;
 float a_y = 0.5;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class Car {
+   int topSpeed;
+   String colour;
+   int currentSpeed;
+   
+   public Car(int topSpeed, String colour){
+     this.topSpeed = topSpeed;
+     this.colour = colour; 
+   }
+   
+   public void print_specs(){
+      println("Colour: " + this.colour);
+      println("Top speed: " + this.topSpeed);
+   }
+}
+
 void setup() {
   size(1000, 800);
   noStroke();
+  
+  Car myCar = new Car(55, "black");
+  Car yourCar = new Car(80, "pink");
+
+  println("myCar");
+  myCar.print_specs();
+  println();
+  println("yourCar");
+  yourCar.print_specs();
+    
 }
+
+
+
+
+
+
+
 
 void draw() {
   background(255, 192, 203);
