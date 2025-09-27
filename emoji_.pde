@@ -1,5 +1,5 @@
 
-Emoji[] emojis = new Emoji[150];
+Emoji[] emojis = new Emoji[200];
 
 String[] names = {
   "Harold",
@@ -28,8 +28,8 @@ void setup() {
   for(int i =0; i < emojis.length; i++){
     emojis[i] = new Emoji(
       randomColour(), 
-      (int)random(10, 150), 
-      names[(int)random(names.length)], 
+      (int)random(5, 150), 
+      "", 
       random(width), 
       random(height)
     );
@@ -43,24 +43,6 @@ void draw() {
     emoji.update();
     emoji.draw();
   }
-  
-  //emojis[0].update();
-  //emojis[0].draw();
-  
-  //tim.update();
-  //tim.draw();
-  
-  //phil.update();
-  //phil.draw();
-  
-  //geronimo.update();
-  //geronimo.draw();
-  
-  //bob.update();
-  //bob.draw();
-  
-  //heather.update();
-  //heather.draw();
 
 }
 

@@ -1,5 +1,5 @@
 
-final float K = 0.5;
+final float K = 0.0000001;
 final float M = 100;
 
 public class Emoji {
@@ -23,7 +23,7 @@ public class Emoji {
     this.vy = random(-2, 3);
 
     this.ax = 0;
-    this.ay = 0;
+    this.ay = 1;
   }
 
   public void draw() {
@@ -49,9 +49,9 @@ public class Emoji {
 
   public void update() {
 
-    //friction
-    //this.ax = -1*(K/M)*this.vx;
-    //this.ay = -1*(K/M)*this.vy;
+    ////friction
+    //this.ax = -1*(K/this.size)*this.vx;
+    //this.ay = -1*(K/this.size)*this.vy;
 
     //change in velocity
     this.vx = this.vx + this.ax;
@@ -67,7 +67,7 @@ public class Emoji {
     if (this.y >= height - this.size/2) {
       float overshootY = this.y - (height- this.size/2);
       this.y -= 2*overshootY;
-      this.vy *= -1;
+      this.vy *= -0.9;
     }
 
     //ceiling
